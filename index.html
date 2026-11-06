@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Personal website of Myriam Hajjaji. Experience in digital transformation, product development, business analysis and leadership, with a developing project portfolio.">
+  <title>Myriam Hajjaji | Personal Website</title>
+  <style>
+    :root {
+      --ink: #152c3c;
+      --muted: #44586a;
+      --blue: #14528b;
+      --blue-deep: #103c68;
+      --orange: #b94f12;
+      --orange-soft: #fff2e7;
+      --sky-soft: #eaf4fc;
+      --page: #f8fbfd;
+      --surface: #ffffff;
+      --line: #cbd8e3;
+      --focus: #ca5b19;
+      --radius: 18px;
+      --shadow: 0 14px 38px rgba(15, 52, 78, 0.07);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--page); font-size: 17px; line-height: 1.68; }
+    a { color: var(--blue); text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1.5px; }
+    a:hover { color: var(--orange); }
+    a:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: 3px; }
+    .skip-link { position: absolute; z-index: 100; top: -100px; left: 12px; padding: 10px 16px; background: #fff; color: var(--ink); border: 2px solid var(--blue); }
+    .skip-link:focus { top: 12px; }
+    .wrap { width: min(1080px, calc(100% - 40px)); margin-inline: auto; }
+    .topbar { background: var(--surface); border-bottom: 1px solid var(--line); }
+    .topbar-inner { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .wordmark { font-weight: 800; color: var(--ink); text-decoration: none; line-height: 1.2; letter-spacing: -0.02em; }
+    .wordmark:hover { color: var(--blue); }
+    .wordmark .mark { color: var(--orange); }
+    nav[aria-label="Main navigation"] ul { display: flex; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; gap: 6px 22px; }
+    nav[aria-label="Main navigation"] a { font-weight: 650; font-size: 16px; white-space: nowrap; }
+    .hero { padding: 76px 0 68px; display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(230px, 0.8fr); align-items: center; gap: clamp(26px, 6vw, 76px); }
+    .eyebrow { margin: 0 0 16px; color: var(--blue-deep); font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 800; }
+    .eyebrow::before { content: ""; display: inline-block; vertical-align: middle; width: 26px; height: 4px; margin-right: 12px; background: var(--orange); border-radius: 3px; }
+    h1, h2, h3, h4, p { overflow-wrap: break-word; }
+    h1 { margin: 0; font-size: clamp(42px, 7vw, 76px); letter-spacing: -0.06em; line-height: 1.08; }
+    .hero-line { color: var(--blue-deep); font-weight: 600; margin: 22px 0 14px; font-size: clamp(18px, 2.4vw, 22px); }
+    .hero-note { color: var(--muted); margin: 0; max-width: 48ch; }
+    .portrait { min-height: 285px; display: flex; align-items: center; justify-content: center; padding: 28px; border-radius: 26px; border: 2px dashed #8aa6bf; background: linear-gradient(135deg, var(--sky-soft), #fff 70%); text-align: center; }
+    .portrait p { font-weight: 750; color: var(--blue-deep); margin: 0; }
+    .portrait span { display: block; margin-top: 10px; color: var(--muted); font-size: 16px; font-weight: 450; }
+    .content { padding-bottom: 75px; }
+    main > section { scroll-margin-top: 24px; border-top: 1px solid var(--line); padding: 52px 0 56px; }
+    .section-heading { display: grid; grid-template-columns: minmax(190px, 0.68fr) minmax(0, 1.7fr); align-items: start; gap: 30px; margin-bottom: 26px; }
+    h2 { margin: 0; font-size: clamp(27px, 4.2vw, 37px); line-height: 1.18; letter-spacing: -0.035em; }
+    .section-desc { color: var(--muted); margin: 2px 0 0; max-width: 66ch; }
+    .about-card { border-left: 5px solid var(--orange); padding: 24px 28px; border-radius: 0 var(--radius) var(--radius) 0; background: var(--surface); box-shadow: var(--shadow); }
+    .about-card p:first-child { font-size: clamp(18px, 2.2vw, 21px); line-height: 1.55; margin-top: 0; }
+    .about-card p:last-child { margin-bottom: 0; }
+    .placeholder { color: #584f41; background: #fff8eb; border: 1px dashed #c88a4c; border-radius: 10px; padding: 12px 16px; font-size: 16px; }
+    .projects-grid { display: grid; grid-template-columns: minmax(0, 1fr); max-width: 720px; gap: 22px; }
+    .project-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .project-visual { min-height: 225px; display: grid; place-items: center; gap: 8px; text-align: center; padding: 30px; background: repeating-linear-gradient(135deg, #e8f3fa, #e8f3fa 12px, #eef7fc 12px, #eef7fc 24px); border-bottom: 1px solid var(--line); }
+    .project-visual strong { font-size: 20px; color: var(--blue-deep); }
+    .project-visual span { color: var(--muted); font-size: 16px; }
+    .project-body { padding: 26px; }
+    .project-body h3 { margin: 0 0 12px; font-size: 23px; letter-spacing: -0.025em; }
+    .project-body p { margin: 9px 0; }
+    .project-body .fine { color: var(--muted); font-size: 16px; }
+    .project-body .credit { border-top: 1px solid var(--line); margin-top: 20px; padding-top: 14px; }
+    .cv-grid { display: grid; grid-template-columns: minmax(0, 1.42fr) minmax(260px, 0.85fr); gap: 24px; align-items: start; }
+    .cv-column { display: grid; gap: 24px; }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 25px 27px; box-shadow: var(--shadow); }
+    .panel h3 { font-size: 23px; letter-spacing: -0.025em; line-height: 1.3; margin: 0 0 20px; }
+    .timeline { border-left: 3px solid var(--line); margin-left: 7px; padding-left: 23px; }
+    .timeline-item { position: relative; padding-bottom: 24px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before { content: ""; position: absolute; left: -32px; top: 9px; height: 13px; width: 13px; background: var(--blue); border: 3px solid var(--surface); outline: 2px solid var(--blue); border-radius: 50%; }
+    .timeline-item h4 { font-size: 19px; line-height: 1.4; margin: 0; }
+    .time { font-size: 16px; margin: 3px 0 9px; color: var(--muted); font-weight: 650; }
+    .detail { margin: 5px 0 10px; color: var(--muted); }
+    ul.plain { padding-left: 23px; margin: 9px 0 0; }
+    ul.plain li { margin-bottom: 8px; }
+    .skills { display: flex; gap: 8px; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; }
+    .skills li { padding: 7px 12px; border: 1px solid #b5cedf; background: var(--sky-soft); border-radius: 10px; font-size: 16px; font-weight: 550; }
+    .mini-heading { margin: 22px 0 8px; font-size: 18px; }
+    .notice { background: var(--orange-soft); border-left: 4px solid var(--orange); padding: 14px 17px; margin: 18px 0 0; border-radius: 0 8px 8px 0; }
+    .info-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 28px; max-width: 720px; }
+    .info-card p { margin: 0 0 13px; }
+    .info-card p:last-child { margin-bottom: 0; }
+    footer { background: var(--blue-deep); color: #fff; padding: 28px 0; }
+    footer p { margin: 0; font-size: 16px; }
+    footer .wrap { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px 30px; flex-wrap: wrap; }
+    @media (max-width: 780px) {
+      .topbar-inner { align-items: flex-start; flex-direction: column; padding-top: 18px; padding-bottom: 18px; }
+      .hero { padding: 48px 0; grid-template-columns: 1fr; }
+      .portrait { min-height: 180px; }
+      .section-heading, .cv-grid { grid-template-columns: 1fr; }
+      .section-heading { gap: 11px; }
+      main > section { padding: 40px 0; }
+    }
+    @media (max-width: 480px) {
+      .wrap { width: min(1080px, calc(100% - 28px)); }
+      .panel, .project-body, .about-card, .info-card { padding: 20px; }
+      nav[aria-label="Main navigation"] ul { gap: 8px 15px; }
+      .hero { gap: 25px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="wordmark" href="#top" aria-label="Myriam Hajjaji, back to top">Myriam Hajjaji<span class="mark">.</span></a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#about-me">About me</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#cv">CV</a></li>
+          <li><a href="#more-information">More Information</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap" id="top">
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Personal website</p>
+        <h1>Myriam Hajjaji</h1>
+        <p class="hero-line">[PLACEHOLDER: Your one-sentence headline from bio.txt]</p>
+        <p class="hero-note">Business Analyst with experience in digital transformation and product development.</p>
+      </div>
+      <div class="portrait" aria-label="Portrait placeholder">
+        <p>Portrait coming soon<span>[PLACEHOLDER: Portrait not marked READY]</span></p>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content" class="wrap content">
+    <section id="about-me" aria-labelledby="about-heading">
+      <div class="section-heading">
+        <h2 id="about-heading">About me</h2>
+        <p class="section-desc">An introduction based on the profile statement in the CV you supplied.</p>
+      </div>
+      <div class="about-card">
+        <p>Business Analyst with experience in digital transformation and product development, applying analytical and problem-solving skills to design solutions that bridge strategy and execution. Seeking to build a career in Product Management.</p>
+        <p class="placeholder">[PLACEHOLDER: Add your short personal bio from bio.txt.]</p>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-heading">
+      <div class="section-heading">
+        <h2 id="projects-heading">Projects</h2>
+        <p class="section-desc">A space for your data visualisation projects. No project URL or READY chart file has been supplied.</p>
+      </div>
+      <div class="projects-grid">
+        <article class="project-card" aria-labelledby="project-one-heading">
+          <div class="project-visual">
+            <div>
+              <strong>Chart coming soon</strong>
+              <span>[PLACEHOLDER: Chart 1 is not marked READY]</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3 id="project-one-heading">[PLACEHOLDER: Chart 1 title]</h3>
+            <p><strong>Question or purpose:</strong> [PLACEHOLDER: What the chart answers or shows]</p>
+            <p><strong>Data source:</strong> [PLACEHOLDER: Data source]</p>
+            <p><strong>What to notice:</strong> [PLACEHOLDER: One-sentence insight]</p>
+            <div class="credit fine">
+              <p><strong>Credit:</strong> [PLACEHOLDER: Exact credit line from Section 3 of the student guide]</p>
+              <p><strong>Course-chart label:</strong> [PLACEHOLDER: Exact “copy of a course chart” label from Section 3 of the student guide]</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="cv" aria-labelledby="cv-heading">
+      <div class="section-heading">
+        <h2 id="cv-heading">CV</h2>
+        <p class="section-desc">Education, experience, skills, leadership and volunteering, transcribed from your attached CV. The PDF download is not enabled because its publishing status has not been marked READY.</p>
+      </div>
+      <div class="cv-grid">
+        <div class="cv-column">
+          <div class="panel">
+            <h3>Work experience</h3>
+            <div class="timeline">
+              <article class="timeline-item">
+                <h4>Mosaic Shifter — Business Analyst</h4>
+                <p class="time">Coventry · October 2025 – Present</p>
+                <p class="detail">Change management agency specialised in IT and digital transformation.</p>
+                <ul class="plain">
+                  <li>Contributed to an AI-powered change management platform, refining its direction using 25+ survey responses, seven user interviews and prototype testing.</li>
+                  <li>Identified security and regulatory adoption constraints that influenced a significant change in product direction.</li>
+                  <li>Helped shape the value proposition and business model, including sales funnel design, feature prioritisation and prototype design.</li>
+                  <li>Supported 5+ transformation projects for clients including BNP Paribas and Natixis, producing managerial- and executive-level materials.</li>
+                  <li>Contributed to an enhanced OKR execution framework for alignment and cross-functional delivery.</li>
+                  <li>Led discovery activities and coordinated prototype demos; supported MVP development, willingness-to-pay testing and approximately ten workshops.</li>
+                  <li>Synthesised workshop outputs into executive-level materials, dashboards and frameworks, and contributed to strategic alignment and organisational change workshops.</li>
+                </ul>
+              </article>
+              <article class="timeline-item">
+                <h4>Mosaic Shifter — Intern</h4>
+                <p class="time">Coventry · September 2023 – August 2024</p>
+                <p class="detail">Change management agency specialised in IT and digital transformation.</p>
+                <ul class="plain">
+                  <li>Produced 12 video scripts for IT banking clients about transformation initiatives.</li>
+                  <li>Helped develop employee communication tools, including videos and infographics, making technical content clearer and more accessible.</li>
+                  <li>Supported onboarding programme design, including the gamification of compliance training.</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Leadership experience</h3>
+            <div class="timeline">
+              <article class="timeline-item">
+                <h4>Lighthouse Society — Founder &amp; President</h4>
+                <p class="time">October 2023 – March 2024</p>
+                <ul class="plain">
+                  <li>Created and led Warwick’s first society aimed at supporting mental health through art-based events.</li>
+                  <li>Formed an executive team and organised workshops, sharing sessions and lunch-and-learn events.</li>
+                </ul>
+              </article>
+              <article class="timeline-item">
+                <h4>Warwick Women’s Careers Society — Secretary</h4>
+                <p class="time">October 2021 – March 2023</p>
+                <ul class="plain">
+                  <li>Wrote a weekly professional growth newsletter, adding women-in-art and innovation content and increasing mailing-list outreach by 15%.</li>
+                  <li>Helped connect the society with non-STEM sponsors, including Teach First.</li>
+                  <li>Supported a more diverse approach to recruiting speakers for the annual Summit, for which a record 200+ tickets were sold.</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </div>
+        <div class="cv-column">
+          <div class="panel">
+            <h3>Education</h3>
+            <div class="timeline">
+              <article class="timeline-item">
+                <h4>Diploma in Full-Stack Web Development (Software Engineering Program)</h4>
+                <p class="detail">Holberton School of Tunis</p>
+                <p class="time">March – September 2025</p>
+              </article>
+              <article class="timeline-item">
+                <h4>BA Philosophy, Politics &amp; Economics (PPE)</h4>
+                <p class="detail">University of Warwick</p>
+                <p class="time">September 2021 – September 2025</p>
+              </article>
+              <article class="timeline-item">
+                <h4>French Baccalaureate with International Option</h4>
+                <p class="detail">With Honours and Distinction of the Jury · École Jeannine Manuel</p>
+                <p class="time">September 2017 – June 2021</p>
+              </article>
+              <article class="timeline-item">
+                <h4>Concours Général — French National Contest</h4>
+                <p class="time">March 2020 – March 2021</p>
+                <p class="detail">Selected as one of approximately 700 students nationwide out of 630,000 for the contest in English, French and Philosophy.</p>
+              </article>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Skills</h3>
+            <ul class="skills" aria-label="Skills list">
+              <li>Word · Proficient</li>
+              <li>PowerPoint · Proficient</li>
+              <li>Excel · Proficient</li>
+              <li>Python · Proficient</li>
+              <li>C · Proficient</li>
+              <li>SQL · Intermediate</li>
+              <li>Analytical and structured thinking</li>
+              <li>Market and user discovery</li>
+              <li>Communication and stakeholder engagement</li>
+              <li>Creative problem-solving</li>
+            </ul>
+            <h4 class="mini-heading">Languages</h4>
+            <ul class="plain">
+              <li>English — Native speaker</li>
+              <li>French — Native speaker</li>
+              <li>Spanish — Basic</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>Volunteering</h3>
+            <h4>New Horizons Annual Conference</h4>
+            <p class="time">London · February 2019</p>
+            <p>Acted as a relationship manager for 50+ international speakers.</p>
+          </div>
+          <p class="notice">CV download coming soon. [PLACEHOLDER: Mark your public PDF READY and provide its exact lowercase filename to add a download link.]</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="more-information" aria-labelledby="more-information-heading">
+      <div class="section-heading">
+        <h2 id="more-information-heading">More Information</h2>
+        <p class="section-desc">Further information and public professional links can be added here.</p>
+      </div>
+      <div class="info-card">
+        <p><strong>LinkedIn:</strong> [PLACEHOLDER: Public HTTPS LinkedIn URL from links.txt]</p>
+        <p>[PLACEHOLDER: Any additional public information you want to share.]</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© 2026 Myriam Hajjaji</p>
+      <p>Built with the help of generative AI; content and decisions are my own.</p>
+    </div>
+  </footer>
+</body>
+</html>
